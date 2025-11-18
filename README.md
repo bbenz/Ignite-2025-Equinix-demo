@@ -33,10 +33,11 @@ This demo showcases how to define hybrid network connectivity as code using Terr
 ## Quick Start
 
 1. **Prerequisites**
-   - Azure subscription
-   - Equinix Fabric account
-   - Terraform installed
+   - Azure subscription (you'll need the subscription ID)
+   - Equinix Metal account (optional - for full connectivity)
+   - Terraform installed (v1.0+)
    - VS Code with GitHub Copilot
+   - Azure CLI (optional - for authentication)
 
 2. **Setup**
    ```bash

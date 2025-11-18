@@ -115,17 +115,17 @@ This document provides detailed information about the ExpressRoute + Equinix Fab
 
 ## Terraform Providers
 
-### azurerm Provider
+**azurerm Provider (~> 3.0, compatible with 4.x)**
 
 **Purpose**: Manage Azure resources
 
 **Key Resources Used**:
 - `azurerm_resource_group`: Container for resources
-- `azurerm_virtual_network`: VNet definition
-- `azurerm_subnet`: Subnets including GatewaySubnet
-- `azurerm_public_ip`: For ExpressRoute gateway
-- `azurerm_virtual_network_gateway`: ExpressRoute gateway
-- `azurerm_express_route_circuit`: The ExpressRoute circuit
+- `azurerm_virtual_network`: VNet definition (10.0.0.0/16)
+- `azurerm_subnet`: GatewaySubnet (10.0.1.0/24 - required name)
+- `azurerm_public_ip`: Static public IP for ExpressRoute gateway
+- `azurerm_virtual_network_gateway`: ExpressRoute gateway (Standard SKU)
+- `azurerm_express_route_circuit`: The ExpressRoute circuit with service key
 - `azurerm_virtual_network_gateway_connection`: Links gateway to circuit
 
 **Authentication**:
@@ -133,17 +133,22 @@ This document provides detailed information about the ExpressRoute + Equinix Fab
 - Service Principal
 - Managed Identity
 
-### equinix Provider
+**equinix Provider (~> 1.14, compatible with 4.x)**
 
 **Purpose**: Manage Equinix Fabric resources
 
 **Key Resources Used**:
-- `equinix_fabric_connection`: L2 connection to Azure
-- Optional: `equinix_fabric_routing_protocol` for BGP configuration
+- `equinix_fabric_connection`: L2 connection to Azure (commented out in demo)
+- Note: Requires actual Equinix credentials and port/service token setup
 
 **Authentication**:
-- API token (client ID + client secret)
-- Stored in environment variables or terraform.tfvars
+- Environment variables: `EQUINIX_API_CLIENTID` and `EQUINIX_API_CLIENTSECRET`
+- Or via Terraform variables (not recommended for sensitive data)
+
+**Demo Note**: The Fabric connection is shown as a commented placeholder in the demo code. Full implementation requires:
+- Active Equinix Fabric account
+- Available port or service token
+- Actual service key from ExpressRoute circuit
 
 ## Variables and Configuration
 

@@ -105,16 +105,21 @@ When generating or updating this Terraform configuration:
 ## Quick Start After Setup
 
 ```bash
-# Initialize Terraform
-terraform init
+# Copy example variables
+cp terraform.tfvars.example terraform.tfvars
+
+# Edit with your Azure subscription ID
+# nano terraform.tfvars or code terraform.tfvars
+
+# Initialize Terraform with provider upgrade
+terraform init -upgrade
 
 # Validate configuration
 terraform validate
 
-# Preview changes (should work with dummy data)
+# Preview changes (should work with dummy data for subscription ID)
 terraform plan
 
-# When ready with real credentials, edit terraform.tfvars
-# Then apply
+# When ready with real credentials and Equinix setup, apply
 terraform apply
 ```

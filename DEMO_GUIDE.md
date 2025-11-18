@@ -193,7 +193,7 @@ Prompt: "Let's bump the bandwidth to 500 Mbps and switch the metro to DC."
 ### What to Do
 
 ```bash
-# Run terraform plan
+# Run terraform plan (may take a minute for gateway resources)
 terraform plan
 ```
 

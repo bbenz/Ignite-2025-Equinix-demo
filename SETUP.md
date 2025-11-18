@@ -205,8 +205,11 @@ metal_project_id      = "your-equinix-project-id"
 ## Step 3: Initialize Terraform
 
 ```bash
-terraform init
+# Initialize and upgrade providers to latest compatible versions
+terraform init -upgrade
 ```
+
+This will download the required providers (azurerm and equinix) and resolve any version conflicts.
 
 ## Step 4: Validate Configuration
 
@@ -229,13 +232,22 @@ terraform apply
 ## Quick Commands
 
 ```bash
-# Just to fix the variable errors for now:
-# 1. Open variables.tf in your editor
-# 2. Copy the variable declarations above
-# 3. Paste at the end of the file
-# 4. Save
+# Complete setup:
+# 1. Ensure only variables.tf exists (remove variables-complete.tf if present)
+# 2. Copy terraform.tfvars.example to terraform.tfvars
+# 3. Edit terraform.tfvars with your Azure subscription ID
 
 # Then run:
-terraform init
+terraform init -upgrade
 terraform validate
+terraform plan
 ```
+
+## Important Files
+
+- **variables.tf** - All variable declarations (keep only this file)
+- **terraform.tfvars** - Your actual values (excluded from git)
+- **terraform.tfvars.example** - Template with dummy data (safe to commit)
+- **.gitignore** - Protects sensitive files from being committed
+- **main.tf** - Resource definitions (simplified, no modules)
+- **outputs.tf** - Output values after apply
