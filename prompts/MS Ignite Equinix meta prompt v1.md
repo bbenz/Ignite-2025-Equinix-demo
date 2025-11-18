@@ -43,7 +43,7 @@ CONSTRAINTS AND STYLE:
   - `main.tf` with providers and main resources
   - `variables.tf` with key inputs (metros/locations, bandwidth, redundancy, subscription IDs, etc.)
   - `outputs.tf` with a few useful outputs (e.g., connection IDs, circuit names).
-- Prefer readability over completeness: this is for a live booth demo, not production.
+
 
 PART 1 – TERRAFORM CODE
 

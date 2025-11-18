@@ -1,0 +1,53 @@
+# Example terraform.tfvars file
+# Copy this to terraform.tfvars and fill in your actual values
+
+# Azure Configuration (REQUIRED)
+azure_subscription_id = "e424242-4726-4e1a-afe6-7f14e43429d362"
+azure_region          = "westus2"
+
+# Azure ExpressRoute Settings
+az_exproute_circuit_name     = "ignite-demo-expressroute"
+az_peering_customer_asn      = 65000
+az_peering_primary_address   = "192.168.1.0/30"
+az_peering_secondary_address = "192.168.2.0/30"
+az_peering_vlan_id           = 100
+az_peering_shared_key        = ""  # Optional, leave empty for now
+
+az_tags = {
+  Environment = "Demo"
+  Project     = "Ignite2025"
+  Owner       = "demo-user"
+}
+
+# Equinix Fabric Settings
+fabric_connection_name        = "ignite-demo-fabric-primary"
+fabric_speed                  = 100  # Mbps
+fabric_destination_metro_code = "SV"  # Silicon Valley
+fabric_metro_code             = "SV"
+fabric_bandwidth_mbps         = 100
+fabric_notification_users     = ["demo@example.com"]
+
+# Connection Method - Using service token for this example
+fabric_port_name              = ""
+fabric_vlan_stag              = null
+fabric_service_token_id       = ""
+network_edge_device_id        = ""
+network_edge_device_interface_id = ""
+network_edge_configure_bgp    = false
+
+# Redundancy (optional)
+redundancy_type                      = "SINGLE"
+fabric_secondary_connection_name     = "ignite-demo-fabric-secondary"
+fabric_secondary_port_name           = ""
+fabric_secondary_vlan_stag           = null
+fabric_secondary_service_token_id    = ""
+network_edge_secondary_device_id     = ""
+network_edge_secondary_device_interface_id = ""
+
+# Equinix Metal Configuration
+metal_auth_token  = "dummy-metal-api-token-12345"
+metal_project_id  = "12345678-90ab-cdef-1234-567890abcdef"
+metal_metro       = "da"  # Dallas
+metal_plan        = "c3.small.x86"
+metal_os          = "ubuntu_22_04"
+server_hostname   = "ignite-demo-server"

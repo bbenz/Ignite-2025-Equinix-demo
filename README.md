@@ -46,6 +46,9 @@ This demo showcases how to define hybrid network connectivity as code using Terr
    # Initialize Terraform
    terraform init
 
+   # If there are compatibility errors:
+   terraform init -upgrade
+
    # Review the plan
    terraform plan
 

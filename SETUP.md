@@ -1,46 +1,10 @@
-# Equinix Metal Variables
-# Environment Configuration
-variable "env_name" {
-  description = "Environment name for resource naming"
-  type        = string
-  default     = "ignite-demo"
-}
+# Quick Setup Guide
 
-variable "metal_auth_token" {
-  description = "Equinix Metal API token"
-  type        = string
-  sensitive   = true
-}
+## Step 1: Add Missing Variables to variables.tf
 
-variable "metal_project_id" {
-  description = "Equinix Metal project ID"
-  type        = string
-}
+Your `variables.tf` file needs to be updated with all the required variable declarations. Add this content at the end of your existing `variables.tf`:
 
-variable "metal_metro" {
-  description = "Equinix Metal metro location"
-  type        = string
-  default     = "da"
-}
-
-variable "metal_plan" {
-  description = "Equinix Metal server plan"
-  type        = string
-  default     = "c3.small.x86"
-}
-
-variable "metal_os" {
-  description = "Operating system for the Metal server"
-  type        = string
-  default     = "ubuntu_22_04"
-}
-
-variable "server_hostname" {
-  description = "Hostname for the Metal server"
-  type        = string
-  default     = "ignite-demo-server"
-}
-
+```hcl
 # Azure Configuration
 variable "azure_subscription_id" {
   description = "Azure subscription ID"
@@ -220,3 +184,58 @@ variable "network_edge_secondary_device_interface_id" {
   type        = string
   default     = ""
 }
+```
+
+## Step 2: Create terraform.tfvars
+
+Copy `terraform.tfvars.example` to `terraform.tfvars` and fill in your values:
+
+```bash
+cp terraform.tfvars.example terraform.tfvars
+```
+
+Then edit `terraform.tfvars` with your actual values. At minimum, you need:
+
+```hcl
+azure_subscription_id = "your-actual-subscription-id"
+metal_auth_token      = "your-equinix-metal-token"
+metal_project_id      = "your-equinix-project-id"
+```
+
+## Step 3: Initialize Terraform
+
+```bash
+terraform init
+```
+
+## Step 4: Validate Configuration
+
+```bash
+terraform validate
+```
+
+## Step 5: Plan Your Deployment
+
+```bash
+terraform plan
+```
+
+## Step 6: Apply (when ready)
+
+```bash
+terraform apply
+```
+
+## Quick Commands
+
+```bash
+# Just to fix the variable errors for now:
+# 1. Open variables.tf in your editor
+# 2. Copy the variable declarations above
+# 3. Paste at the end of the file
+# 4. Save
+
+# Then run:
+terraform init
+terraform validate
+```
